@@ -14,7 +14,7 @@ help:
 	@echo "  make           Show this help message"
 	@echo "  make all       Build for all supported platforms (Windows and macOS)"
 	@echo "  make native    Build for the native OS"
-	@echo "  make win       Build for Windows (64-bit)"
+	#@echo "  make win       Build for Windows (64-bit)" <not implemented for pf-tui>
 	@echo "  make mac       Build for macOS (Apple Silicon)"
 	@echo "  make clean     Remove build artifacts"
 

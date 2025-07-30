@@ -7,10 +7,6 @@ TARGET_NATIVE := pf-tui
 TARGET_MAC_ARM64 := pf-tui.mac-arm64
 TARGET_WIN := pf-tui.exe
 
-# Build for the native OS
-build:
-	go build -o $(TARGET_NATIVE)
-
 help:
 	@echo "Makefile for pf-tui-go"
 	@echo ""
@@ -23,16 +19,21 @@ help:
 	@echo "  make clean     Remove build artifacts"
 
 # Build for all supported platforms
-all: win mac
+all: mac
+#all: win mac
+
+# Build for the native OS
+build:
+	go build -o $(TARGET_NATIVE)
 
 # Build for macOS (Apple Silicon)
 mac:
 	GOOS=darwin GOARCH=arm64 go build -o $(TARGET_MAC_ARM64)
 
-# Build for Windows (64-bit)
-win:
-	GOOS=windows GOARCH=amd64 go build -o $(TARGET_WIN)
-
+## Build for Windows (64-bit)
+#win:
+#	GOOS=windows GOARCH=amd64 go build -o $(TARGET_WIN)
+#
 # Clean up build artifacts
 clean:
 	rm -f $(TARGET_NATIVE) $(TARGET_MAC_ARM64) $(TARGET_WIN) 

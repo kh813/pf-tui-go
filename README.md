@@ -12,6 +12,7 @@ A terminal user interface for managing the PF firewall on macOS.
 - **Enable and disable PF on startup:** Configure PF to start automatically on system boot.
 - **Live status information:** View live information and statistics from the PF firewall.
 - **Import and export rules:** Easily back up and restore your firewall configuration.
+- **Sudo password prompt handling:** Automatically pauses the TUI to allow for password entry in the terminal, preventing UI conflicts.
 - **Test mode:** Run the application without requiring `sudo` privileges for UI testing.
 
 ## Installation
@@ -53,22 +54,21 @@ The application is controlled using keyboard shortcuts. The available shortcuts 
 
 ## Configuration
 
-The configuration file is located at `~/.config/pf-tui/rules.json`. This file contains all of your firewall and port forwarding rules.
+On macOS, the configuration file is located at `~/.config/pf-tui/rules.json`. This file contains all of your firewall and port forwarding rules.
+
+The application also keeps a log file at `~/.config/pf-tui/pf-tui.log`, which can be useful for troubleshooting.
 
 ## Development
 
 ### Building
 
-To build the application for all supported platforms, run:
+To build the application, run:
 
 ```bash
-make all
+make native
 ```
 
-This will create two binaries:
-
--   `pf-tui.mac-arm64`: For macOS on Apple Silicon
--   `pf-tui.exe`: For Windows
+This will create a binary for your current platform in the project directory.
 
 ### Testing
 

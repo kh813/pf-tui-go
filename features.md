@@ -16,23 +16,30 @@ This is a small project and I'd like to keep the files and structure as simple a
 The initial screen provides a central menu for all major operations.
 
 - **Status Display:** Shows the current status of the PF firewall (Enabled/Disabled) and whether it's enabled on startup. This is displayed at the top of the screen.
-- **Navigation:** Use arrow keys to navigate the menu. Navigation is circular, meaning pressing up from the top item goes to the bottom, and pressing down from the bottom item goes to the top. This has been implemented.
-- **Actions:**
+- **Navigation:** Use arrow keys to navigate the menu. Navigation is circular, meaning pressing up from the top item goes to the bottom, and pressing down from the bottom item goes to the top.
 
-    - **Edit Firewall Rule**
-    - **Add New Firewall Rule**
-    - **Edit Port Forwarding Rule**
-    - **Add Port Forwarding Rule**
-    - **Save & Apply Configuration**
-    - **Export Configuration**
-    - **Import Configuration**
-    - **Show Current Rules**
-    - **Show Info**
-    - **Enable PF**
-    - **Disable PF**
-    - **Enable PF on Startup**
-    - **Disable PF on Startup**
-    - **Exit**
+### Menu Structure
+
+The menu is organized into logical groups separated by lines:
+
+- **Rule Management**
+    - Edit Firewall Rule
+    - Add New Firewall Rule
+    - Edit Port Forwarding Rule
+    - Add Port Forwarding Rule
+- **Configuration**
+    - Save & Apply Configuration
+    - Export Configuration
+    - Import Configuration
+- **Live PF Information & Control**
+    - Show Current Rules
+    - Show Info
+    - Enable PF
+    - Disable PF
+    - Enable PF on Startup
+    - Disable PF on Startup
+- **Application**
+    - Exit
 
 ## Firewall Rule Screens
 
@@ -52,9 +59,9 @@ This screen provides a form to create or modify a firewall filter rule. When add
     - **Keep State:** `Yes` or `No` (Select with left/right arrows). (Default: `No`)
     - **Description:** A brief description of the rule (Text input). (Default: empty)
 - **Interaction:**
-    - **Navigate:** Use up/down arrow keys to move between fields.
+    - **Navigate:** Use up/down arrow keys to move between fields. Text input fields are automatically focused when selected.
     - **Edit:** Press `Enter` to enter editing mode for text fields. Press `Enter` again to finalize input and exit editing mode.
-    - **Save:** Press `'s'` to save the rule to `~/.config/pf-tui/rules.json`. If a text input field is active, press `Enter` to finalize the input before pressing `'s'` to save.
+    - **Save:** Press `'s'` to save the rule to `~/.config/pf-tui/rules.json`. If a text input field is active, press `Enter` to finalize the input before pressing `'s'` to save. After saving a new rule, the application navigates to the "Edit Rule List Screen".
     - **Cancel:** Press `Esc` to show a confirmation dialog. Press `Enter` to confirm and return to the main menu.
 
 ### Edit Rule List Screen
@@ -85,9 +92,9 @@ This screen provides a form to create or modify a port forwarding (RDR) rule. Wh
     - **Internal Port:** The internal port to forward to (Text input). (Default: empty) **(Required)**
     - **Description:** A brief description of the rule (Text input). (Default: empty)
 - **Interaction:**
-    - **Navigate:** Use up/down arrow keys to move between fields.
+    - **Navigate:** Use up/down arrow keys to move between fields. Text input fields are automatically focused when selected.
     - **Edit:** Press `Enter` to enter editing mode for text fields. Press `Enter` again to finalize input and exit editing mode.
-    - **Save:** Press `'s'` to save the rule to `~/.config/pf-tui/rules.json`. If a text input field is active, press `Enter` to finalize the input before pressing `'s'` to save.
+    - **Save:** Press `'s'` to save the rule to `~/.config/pf-tui/rules.json`. If a text input field is active, press `Enter` to finalize the input before pressing `'s'` to save. After saving a new rule, the application navigates to the "Edit Port Forwarding Rule List Screen".
     - **Cancel:** Press `Esc` to show a confirmation dialog. Press `Enter` to confirm and return to the main menu.
 
 **Note:** Fields marked as **(Required)** cannot be empty.
@@ -195,15 +202,3 @@ The user interface is managed by a central `model` struct in `tui.go`. This stru
 -   The `FirewallManager` instance to interact with the firewall configuration.
 -   Status information, such as the current PF status and any messages to be displayed to the user.
 -   The application's main `Update` function acts as a state machine, handling messages (like user key presses or data loading) and updating the model's state accordingly. The `View` function then renders the UI based on the current state.
-
-
-## Main menu
-The main menu have separators, and it would look like this.
-
-Main menu
-
-  | Edit Rule
-    Add New Rule
-    Add Port Forwarding Rule
-    Edit Port Forwarding Rule
-    ---

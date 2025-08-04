@@ -233,4 +233,3 @@ This document outlines the tasks required to implement the features described in
 
 -   [x] **"Show Info" screen:**
     -   [x] Fix "Show Info" screen to refresh every second only when PF is enabled.
-

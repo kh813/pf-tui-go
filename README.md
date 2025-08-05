@@ -27,7 +27,7 @@ A terminal user interface for managing the PF firewall on macOS.
 1.  Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/pf-tui-go.git
+    git clone https://github.com/kh813/pf-tui-go.git
     cd pf-tui-go
     ```
 
